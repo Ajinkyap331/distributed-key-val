@@ -9,6 +9,6 @@ Content-Type: application/json
 }
 
 ### Get Request
-GET http://localhost:8080/store
+GET http://localhost:8081/store
 Accept: application/json
 
