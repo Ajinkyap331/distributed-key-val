@@ -1,17 +1,17 @@
 services:
-  leader:
+  node1:
     image: key-val-store:0.0.1
     ports:
       - 8080:8080
     environment:
-      - followers=follower1:8080,follower2:8080
+      - followers=node2:8080,node3:8080
   
-  follower1:
+  node2:
     image: key-val-store:0.0.1
     ports:
       - 8081:8080
   
-  follower2:
+  node3:
     image: key-val-store:0.0.1
     ports:
       - 8082:8080
