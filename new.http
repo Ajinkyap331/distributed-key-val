@@ -1,0 +1,14 @@
+
+### Post Request
+POST http://localhost:8080/store
+Content-Type: application/json
+
+{
+    "key": "abc",
+    "value": "123"
+}
+
+### Get Request
+GET http://localhost:8080/store
+Accept: application/json
+
