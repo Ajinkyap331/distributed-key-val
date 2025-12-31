@@ -1,6 +1,9 @@
 import express from "express";
+import axios from "axios";
 
-const store : {key : string, value : string}[] = []
+const store: { key: string; value: string }[] = [];
+
+const followers = process.env.followers?.split(",") ?? [];
 
 const app = express();
 
@@ -12,6 +15,9 @@ app.get("/", (req, res) => {
 
 app.post("/store", (req, res) => {
   store.push(req.body);
+  followers.forEach((follower) =>
+    axios.post(`http://${follower}/store`, req.body)
+  );
   res.status(200).send(req.body);
 });
 

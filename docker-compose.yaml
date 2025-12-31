@@ -3,7 +3,9 @@ services:
     image: key-val-store:0.0.1
     ports:
       - 8080:8080
-
+    environment:
+      - followers=follower1:8080,follower2:8080
+  
   follower1:
     image: key-val-store:0.0.1
     ports:
