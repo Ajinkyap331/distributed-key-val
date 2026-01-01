@@ -4,8 +4,8 @@ POST http://localhost:8080/store
 Content-Type: application/json
 
 {
-    "key": "abc",
-    "value": "123"
+    "name": "john",
+    "age" : 13
 }
 
 ### Get Request
