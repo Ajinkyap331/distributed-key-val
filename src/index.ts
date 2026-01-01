@@ -1,9 +1,11 @@
 import express from "express";
 import axios from "axios";
+import { add, get } from "./store";
+import { vote } from "./voting";
 
-let store = {};
+const id = parseInt(process.env.ID ?? "");
 
-const followers = process.env.followers?.split(",") ?? [];
+vote(id)
 
 const app = express();
 
@@ -14,15 +16,12 @@ app.get("/", (req, res) => {
 });
 
 app.post("/store", (req, res) => {
-  store = {...store, ...req.body}
-  followers.forEach((follower) =>
-    axios.post(`http://${follower}/store`, req.body)
-  );
+  add(req.body);
   res.status(200).send(req.body);
 });
 
 app.get("/store", (req, res) => {
-  res.status(200).send(store);
+  res.status(200).send(get());
 });
 
 app.listen(8080, () => {
